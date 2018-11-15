@@ -1,0 +1,19 @@
+<backdrop class="locked--top" [size]="300"></backdrop>
+<bubble *ngFor="let bubble of bubbles | async"
+        [ngStyle]="{'opacity': bubble.opacity.toString()}"
+        [offsetLeft]="bubble.offsetLeft"
+        [offsetRight]="bubble.offsetRight"
+        [tweenTo]="bubble.tweenTo"
+        [animationDelay]="bubble.animationDelay"
+        [animationDuration]="bubble.animationDuration">
+    <img [src]="bubble.src">
+</bubble>
+<panel></panel>
+<panel></panel>
+<panel></panel>
+<panel></panel>
+<panel></panel>
+<panel></panel>
+<panel></panel>
+<panel></panel>
+<panel></panel>
