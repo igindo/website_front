@@ -1,11 +1,6 @@
-import 'dart:async';
 import 'dart:html';
 
 import 'package:angular/angular.dart';
-import 'package:angular_router/angular_router.dart' as router show Location;
-import 'package:angular_router/angular_router.dart';
-import 'package:rxdart/rxdart.dart';
-import 'package:tuple/tuple.dart';
 
 import 'package:igindo_home/src/utils/dynamic_css_service.dart';
 import 'package:igindo_home/src/utils/keygen_service.dart';

@@ -3,10 +3,8 @@ import 'dart:html';
 import 'dart:math' as math;
 
 import 'package:angular/angular.dart';
-import 'package:angular_router/angular_router.dart' as router show Location;
 import 'package:angular_router/angular_router.dart';
 import 'package:rxdart/rxdart.dart';
-import 'package:tuple/tuple.dart';
 
 import 'package:igindo_home/src/domain/bubble_data.dart';
 

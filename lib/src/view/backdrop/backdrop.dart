@@ -1,13 +1,10 @@
 import 'dart:async';
 import 'dart:html';
-import 'dart:math';
 
 import 'package:angular/angular.dart';
-import 'package:angular_router/angular_router.dart' as router show Location;
 import 'package:angular_router/angular_router.dart';
 import 'package:rxdart/rxdart.dart';
 import 'package:stagexl/stagexl.dart' as xl;
-import 'package:tuple/tuple.dart';
 
 @Component(
     changeDetection: ChangeDetectionStrategy.Stateful,
