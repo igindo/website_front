@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:html';
 
 import 'package:angular/angular.dart';
@@ -20,7 +21,10 @@ class Bubble extends ComponentState implements OnInit, OnDestroy {
   final String animationInKey, animationOutKey;
 
   @Input()
-  int tweenTo, offsetLeft, offsetRight;
+  int tweenTo, offsetLeft, offsetRight, hueRotate = 0;
+
+  @Input()
+  double opacity;
 
   @Input()
   String animationDelay = '2s', animationDuration = '1s';
@@ -43,30 +47,33 @@ class Bubble extends ComponentState implements OnInit, OnDestroy {
   @override
   void ngOnInit() {
     final child = _element.children.first;
+    final onReady = child is ImageElement ? child.onLoad.first : Future.value();
 
-    if (child is ImageElement) {
-      child.onLoad.listen((_) {
-        final startOffset = child.client.height + 20;
+    onReady.whenComplete(() {
+      final startOffset = child.client.height + 20;
 
-        _dynamicCSSService.createOrReplaceRule(
-            'bubble',
-            animationInKey,
-            '@keyframes a-$animationInKey',
-            '''{
+      _dynamicCSSService.createOrReplaceRule(
+          'bubble',
+          animationInKey,
+          '@keyframes a-$animationInKey',
+          '''{
             from {top: -${startOffset}px;}
             to {top: ${tweenTo}px;}
           }''',
-            prefixWithDot: false);
+          prefixWithDot: false);
 
-        _element.style.animationDelay = animationDelay;
-        _element.style.animationDuration = animationDuration;
-        _element.style.animationName = 'a-$animationInKey';
-        if (offsetLeft != null) _element.style.left = '${offsetLeft}px';
-        if (offsetRight != null) _element.style.right = '${offsetRight}px';
-        _element.style.top = '-${startOffset}px';
-        _element.style.visibility = 'visible';
-      });
-    }
+      _element.style.border = '4px solid rgba(${0x3f}, ${0xa8}, ${0xf5}, $opacity)';
+      _element.style.animationDelay = animationDelay;
+      _element.style.animationDuration = animationDuration;
+      _element.style.animationName = 'a-$animationInKey';
+      if (offsetLeft != null) _element.style.left = '${offsetLeft}px';
+      if (offsetRight != null) _element.style.right = '${offsetRight}px';
+      _element.style.top = '-${startOffset}px';
+      child.style.filter = hueRotate != null && hueRotate > 0
+          ? 'hue-rotate(${hueRotate}deg)'
+          : null;
+      _element.style.visibility = 'visible';
+    });
   }
 
   @override

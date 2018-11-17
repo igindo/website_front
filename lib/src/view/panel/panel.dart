@@ -15,6 +15,12 @@ import 'package:angular_router/angular_router.dart';
 class Panel extends ComponentState {
   final Element _element;
 
+  @Input()
+  String anchorName, bubbles = '';
+
+  Iterable<String> get imagePaths =>
+      bubbles.split(',').map((src) => src.trim());
+
   //-----------------------------
   // Constructor
   //-----------------------------

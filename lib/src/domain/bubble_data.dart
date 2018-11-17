@@ -12,6 +12,7 @@ abstract class BubbleData implements TearOffAndValueObjectSchema {
   int get offsetLeft;
   int get offsetRight;
   int get tweenTo;
+  int get hueRotate;
   String get animationDelay;
   String get animationDuration;
   String get src;

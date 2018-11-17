@@ -1,25 +1,10 @@
 :host {
   font-size: 16px;
-  color: #fff;
+  color: #333;
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 75px 0;
   width: 600px;
-}
-
-p {
-  background: rgba(18, 18, 38, .75);
-  padding: 20px 50px;
-  line-height: 24px;
-  text-align: justify;
-}
-
-h1 {
-  &:before {
-    border-left: 3px solid #3fa8f5;
-    content: "";
-    left: -20px;
-    position: relative;
-  }
+  z-index: 1;
 }

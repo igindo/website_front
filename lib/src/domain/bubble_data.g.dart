@@ -15,6 +15,8 @@ class _BubbleDataImpl implements BubbleData, TearOffAndValueObjectSchema {
   @override
   final int tweenTo;
   @override
+  final int hueRotate;
+  @override
   final String animationDelay;
   @override
   final String animationDuration;
@@ -26,6 +28,7 @@ class _BubbleDataImpl implements BubbleData, TearOffAndValueObjectSchema {
       {this.offsetLeft,
       this.offsetRight,
       this.tweenTo,
+      this.hueRotate,
       this.animationDelay,
       this.animationDuration,
       this.src,
@@ -39,6 +42,8 @@ class _BubbleDataImpl implements BubbleData, TearOffAndValueObjectSchema {
         return offsetRight;
       case 'tweenTo':
         return tweenTo;
+      case 'hueRotate':
+        return hueRotate;
       case 'animationDelay':
         return animationDelay;
       case 'animationDuration':
@@ -68,9 +73,12 @@ class _BubbleDataImpl implements BubbleData, TearOffAndValueObjectSchema {
           hash_combine(
               hash_combine(
                   hash_combine(
-                      hash_combine(hash_combine(0, this.offsetLeft.hashCode),
-                          this.offsetRight.hashCode),
-                      this.tweenTo.hashCode),
+                      hash_combine(
+                          hash_combine(
+                              hash_combine(0, this.offsetLeft.hashCode),
+                              this.offsetRight.hashCode),
+                          this.tweenTo.hashCode),
+                      this.hueRotate.hashCode),
                   this.animationDelay.hashCode),
               this.animationDuration.hashCode),
           this.src.hashCode),
@@ -85,6 +93,8 @@ class _BubbleDataImpl implements BubbleData, TearOffAndValueObjectSchema {
       case 'offsetRight':
         return null;
       case 'tweenTo':
+        return null;
+      case 'hueRotate':
         return null;
       case 'animationDelay':
         return null;
@@ -106,6 +116,7 @@ _BubbleDataImpl _bubbleDataTearOff(
         offsetRight:
             property == 'offsetRight' ? value as int : source.offsetRight,
         tweenTo: property == 'tweenTo' ? value as int : source.tweenTo,
+        hueRotate: property == 'hueRotate' ? value as int : source.hueRotate,
         animationDelay: property == 'animationDelay'
             ? value as String
             : source.animationDelay,
@@ -120,6 +131,7 @@ class BubbleDataFactory {
           {int offsetLeft,
           int offsetRight,
           int tweenTo,
+          int hueRotate,
           String animationDelay,
           String animationDuration,
           String src,
@@ -128,6 +140,7 @@ class BubbleDataFactory {
           offsetLeft: offsetLeft,
           offsetRight: offsetRight,
           tweenTo: tweenTo,
+          hueRotate: hueRotate,
           animationDelay: animationDelay,
           animationDuration: animationDuration,
           src: src,
@@ -140,6 +153,7 @@ Uint8List writeBubbleData(BubbleData value) {
   write(data, writeInt(value.offsetLeft));
   write(data, writeInt(value.offsetRight));
   write(data, writeInt(value.tweenTo));
+  write(data, writeInt(value.hueRotate));
   write(data, writeString(value.animationDelay));
   write(data, writeString(value.animationDuration));
   write(data, writeString(value.src));
@@ -163,6 +177,10 @@ BubbleData readBubbleData(Uint8List data) {
       new Uint8List.fromList(data.sublist(index + 1, index + _size + 1)));
   index += _size + 1;
   _size = data[index];
+  final hueRotate = readInt(
+      new Uint8List.fromList(data.sublist(index + 1, index + _size + 1)));
+  index += _size + 1;
+  _size = data[index];
   final animationDelay = readString(
       new Uint8List.fromList(data.sublist(index + 1, index + _size + 1)));
   index += _size + 1;
@@ -182,6 +200,7 @@ BubbleData readBubbleData(Uint8List data) {
       offsetLeft: offsetLeft,
       offsetRight: offsetRight,
       tweenTo: tweenTo,
+      hueRotate: hueRotate,
       animationDelay: animationDelay,
       animationDuration: animationDuration,
       src: src,
@@ -205,6 +224,7 @@ class BubbleDataEncoder extends Converter<BubbleData, Map<String, dynamic>> {
         'offsetLeft': data?.offsetLeft,
         'offsetRight': data?.offsetRight,
         'tweenTo': data?.tweenTo,
+        'hueRotate': data?.hueRotate,
         'animationDelay': data?.animationDelay,
         'animationDuration': data?.animationDuration,
         'src': data?.src,
@@ -219,6 +239,7 @@ class BubbleDataDecoder extends Converter<Map<String, dynamic>, BubbleData> {
         offsetLeft: data['offsetLeft'] as int,
         offsetRight: data['offsetRight'] as int,
         tweenTo: data['tweenTo'] as int,
+        hueRotate: data['hueRotate'] as int,
         animationDelay: data['animationDelay'] as String,
         animationDuration: data['animationDuration'] as String,
         src: data['src'] as String,
@@ -237,6 +258,9 @@ class _BubbleData$<T> extends ObjectSchema<T> {
   ObjectSchema<int> get tweenTo => new ObjectSchema<int>(path$ != null
       ? (new List<String>.from(path$)..add('tweenTo'))
       : const <String>['tweenTo']);
+  ObjectSchema<int> get hueRotate => new ObjectSchema<int>(path$ != null
+      ? (new List<String>.from(path$)..add('hueRotate'))
+      : const <String>['hueRotate']);
   ObjectSchema<String> get animationDelay =>
       new ObjectSchema<String>(path$ != null
           ? (new List<String>.from(path$)..add('animationDelay'))

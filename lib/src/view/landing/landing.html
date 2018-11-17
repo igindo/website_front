@@ -1,19 +1,39 @@
 <backdrop class="locked--top" [size]="300"></backdrop>
 <bubble *ngFor="let bubble of bubbles | async"
-        [ngStyle]="{'opacity': bubble.opacity.toString()}"
+        [opacity]="bubble.opacity"
         [offsetLeft]="bubble.offsetLeft"
         [offsetRight]="bubble.offsetRight"
         [tweenTo]="bubble.tweenTo"
         [animationDelay]="bubble.animationDelay"
-        [animationDuration]="bubble.animationDuration">
+        [animationDuration]="bubble.animationDuration"
+        [hueRotate]="bubble.hueRotate">
     <img [src]="bubble.src">
 </bubble>
-<panel></panel>
-<panel></panel>
-<panel></panel>
-<panel></panel>
-<panel></panel>
-<panel></panel>
-<panel></panel>
-<panel></panel>
-<panel></panel>
+<panel anchorName="about-us">
+    <p>
+        <iframe width="498" height="450" frameborder="0" style="border:0"
+                src="https://www.google.com/maps/embed/v1/place?q=igindo%20bvba%2C%202970%20schilde%2C%20belgium&key=AIzaSyAbjkFQzw5DoM_-wDMqt_uv4Qts5cD5pTg" allowfullscreen></iframe>
+    </p>
+</panel>
+<panel anchorName="laila-bougria"
+       bubbles="./static/assets/about-laila-1.jpg, ./static/assets/about-laila-2.jpg, ./static/assets/about-laila-3.jpg, ./static/assets/about-laila-4.jpg, ./static/assets/about-laila-5.jpg, ./static/assets/about-laila-6.jpg, ./static/assets/about-laila-7.jpg">
+    <p>
+    <h1><a id="laila-bougria">Laila Bougria</a></h1>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vel vulputate massa, ut egestas lacus. Integer orci elit, viverra quis ante at, ornare accumsan turpis. Pellentesque id enim et justo mollis rutrum in vel dui. Proin fermentum sed tellus in aliquam. Fusce vel iaculis dui, sit amet tincidunt erat. Sed commodo aliquet dolor, in scelerisque ex euismod ut. Maecenas a convallis lacus. Phasellus egestas volutpat orci. Nulla lacinia accumsan lectus, a maximus eros tincidunt et. Praesent vehicula blandit velit a tincidunt. Praesent vel mi ut tellus convallis lacinia. Sed interdum condimentum convallis.
+    <br><br>
+    In efficitur, turpis vel tempor fermentum, felis ante congue mauris, at cursus nunc ante nec massa. In condimentum luctus lacus et suscipit. Curabitur vitae quam nulla. Proin cursus imperdiet lorem, pharetra mollis tortor malesuada et. Pellentesque ultrices, eros quis facilisis dapibus, velit nisi pretium ante, vel lobortis urna lacus at neque. Vestibulum fringilla, urna non eleifend pulvinar, lectus metus tincidunt sem, at suscipit neque ipsum a turpis. Donec id sem quis nunc sodales mollis sed ut dolor. Ut lectus nunc, vulputate vel tristique eget, suscipit eget dui. Nam gravida cursus tincidunt. Duis commodo odio eu sem fringilla cursus. Aliquam at placerat lorem, sit amet maximus purus. Donec pretium tortor quis mollis ullamcorper. Suspendisse potenti. Quisque tristique in purus et ullamcorper.
+    <br><br>
+    Aliquam nunc orci, semper eu nisl ac, varius pellentesque arcu. Etiam mattis blandit nunc eu sodales. Sed vitae bibendum orci. Pellentesque dictum, quam et porta sodales, massa eros ultricies ex, id eleifend nunc nisl eget ante. Fusce gravida, lacus vel hendrerit mattis, urna libero efficitur enim, id ultrices justo lectus nec felis. Sed maximus quis lorem tincidunt interdum. Sed ac commodo risus, in feugiat nisl. Quisque a lobortis enim, a sagittis justo.
+    </p>
+</panel>
+<panel anchorName="frank-pepermans"
+       bubbles="./static/assets/about-frank-1.jpg, ./static/assets/about-frank-2.jpg, ./static/assets/about-frank-3.jpg, ./static/assets/about-frank-4.jpg, ./static/assets/about-frank-5.jpg, ./static/assets/about-frank-6.jpg, ./static/assets/about-frank-7.jpg">
+    <p>
+    <h1><a id="frank-pepermans">Frank Pepermans</a></h1>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vel vulputate massa, ut egestas lacus. Integer orci elit, viverra quis ante at, ornare accumsan turpis. Pellentesque id enim et justo mollis rutrum in vel dui. Proin fermentum sed tellus in aliquam. Fusce vel iaculis dui, sit amet tincidunt erat. Sed commodo aliquet dolor, in scelerisque ex euismod ut. Maecenas a convallis lacus. Phasellus egestas volutpat orci. Nulla lacinia accumsan lectus, a maximus eros tincidunt et. Praesent vehicula blandit velit a tincidunt. Praesent vel mi ut tellus convallis lacinia. Sed interdum condimentum convallis.
+    <br><br>
+    In efficitur, turpis vel tempor fermentum, felis ante congue mauris, at cursus nunc ante nec massa. In condimentum luctus lacus et suscipit. Curabitur vitae quam nulla. Proin cursus imperdiet lorem, pharetra mollis tortor malesuada et. Pellentesque ultrices, eros quis facilisis dapibus, velit nisi pretium ante, vel lobortis urna lacus at neque. Vestibulum fringilla, urna non eleifend pulvinar, lectus metus tincidunt sem, at suscipit neque ipsum a turpis. Donec id sem quis nunc sodales mollis sed ut dolor. Ut lectus nunc, vulputate vel tristique eget, suscipit eget dui. Nam gravida cursus tincidunt. Duis commodo odio eu sem fringilla cursus. Aliquam at placerat lorem, sit amet maximus purus. Donec pretium tortor quis mollis ullamcorper. Suspendisse potenti. Quisque tristique in purus et ullamcorper.
+    <br><br>
+    Aliquam nunc orci, semper eu nisl ac, varius pellentesque arcu. Etiam mattis blandit nunc eu sodales. Sed vitae bibendum orci. Pellentesque dictum, quam et porta sodales, massa eros ultricies ex, id eleifend nunc nisl eget ante. Fusce gravida, lacus vel hendrerit mattis, urna libero efficitur enim, id ultrices justo lectus nec felis. Sed maximus quis lorem tincidunt interdum. Sed ac commodo risus, in feugiat nisl. Quisque a lobortis enim, a sagittis justo.
+    </p>
+</panel>
